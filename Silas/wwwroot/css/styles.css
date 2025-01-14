@@ -1,0 +1,226 @@
+﻿/* =============================
+   RESET BÁSICO
+============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* =============================
+   FONDO DIFUMINADO
+============================= */
+.bg-blur {
+    background: url("/images/fondoSalesianos.jpg") no-repeat center center;
+    background-size: cover;
+    filter: blur(5px); /* Difumina la imagen del fondo como en la web Salesianos ppal */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Se coloca detrás del contenido pq si no noh ay manera */
+}
+
+/* =============================
+   CONTENEDOR PARA CENTRAR 'TARJETA'
+============================= */
+.center-screen {
+    display: flex;
+    justify-content: center; /* Centra horizontal */
+    align-items: center; /* Centra vertical */
+    width: 100%;
+    height: 100vh; /* Ocupa la pantalla entera */
+}
+
+/* =============================
+   TARJETA PRINCIPAL
+============================= */
+.main-card {
+    display: flex;
+    width: 100%;
+    max-width: 1550px;
+    height: 770px; /* Ajustado a ojo */
+    background-color: #ffffff;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Si algo sobresale, se oculta */
+}
+
+/* =============================
+   COLUMNA IZQUIERDA
+============================= */
+.left-half {
+    width: 50%;
+    background: url("/images/fondoSalesianos.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+    /* Para oscurecer un poco y ver el texto claro */
+    .left-half::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+/* Texto superpuesto */
+.left-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+    .left-overlay h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .left-overlay p {
+        font-size: 1.2rem;
+    }
+
+/* =============================
+   COLUMNA DERECHA
+============================= */
+.right-half {
+    width: 50%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 40px;
+}
+
+/* =============================
+   CAJA DE LOGIN
+============================= */
+.login-box {
+    margin: auto; /* Para que quede centrada verticalmente dentro de right-half */
+    max-width: 320px;
+    width: 100%;
+    text-align: center; /* Centrado de elementos internos */
+}
+
+
+
+/* Cabecera del login: logo y texto */
+.login-header img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.login-header h2 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.login-header p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Campos del formulario */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+/* Botón principal */
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Enlaces debajo del formulario */
+.login-box a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+    .login-box a:hover {
+        text-decoration: underline;
+    }
+/* Botón secundario */
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff !important; /* Lo forzamos porque si no no se pone de blanco (porque es un link y se queda azul la letra del botón "Volver al Login" */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none; /* Evita subrayado */
+    display: inline-block; /* Para que se comporte como un botón */
+    margin-top: 10px;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+
+/* =============================
+   FOOTER EN LA COLUMNA DERECHA
+============================= */
+.footer-links {
+    /* Ubicación en la parte inferior de la tarjeta (columna derecha) */
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: #666;
+}
+
+    .footer-links a {
+        color: #666;
+        margin: 0 5px;
+        text-decoration: none;
+    }
+
+        .footer-links a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
