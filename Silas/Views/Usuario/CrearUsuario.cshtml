@@ -1,0 +1,46 @@
+﻿@model Silas.Models.Usuarios.Usuario
+
+<h1>Registro de Usuario</h1>
+<form asp-action="CrearUsuario" method="post">
+
+	<div>
+		<label>Identificacion:</label>
+		<input asp-for="identification" required/>
+	</div>
+	<div>
+		<label>Nombre: </label>
+		<input asp-for="name" required/>
+	</div>
+	<div>
+		<label>Primer Apellido: </label>
+		<input asp-for="firstLastName" required />
+
+	</div>
+	<div>
+		<label>Segundo Apellido: </label>
+		<input asp-for="secondLastName" required />
+	</div>
+	<div>
+		<label>Sexo: </label>
+		<input asp-for="sex" required />
+	</div>
+	<div>
+		<label>
+			Fecha de nacimiento:
+		</label>
+		<input asp-for="birthDate" required type="date"/>
+	</div>
+	<div>
+		<label>Telefono: </label>
+		<input asp-for="telephone" required />
+	</div>
+	<div>
+		<label>Correo: </label>
+		<input asp-for="email" type="email" required/>
+	</div>
+	<div>
+		<label>Nacionalidad: </label>
+		<input asp-for="country" required/>
+	</div>
+	<button type="submit">Crear Cuenta</button>
+</form>
