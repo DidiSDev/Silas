@@ -13,6 +13,7 @@ namespace Silas.Models.Usuarios
 
         public async Task<bool> CrearUsuarioAsync (Usuario usuario) 
         {
+           
         var json = JsonSerializer.Serialize(usuario);
         var content = new StringContent (json, Encoding.UTF8, "application/json");
 
