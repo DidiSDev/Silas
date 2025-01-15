@@ -1,6 +1,9 @@
+using Silas.Models.Usuarios;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<UsuarioService>();	
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -21,8 +24,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
+
 
 
 app.Run();
