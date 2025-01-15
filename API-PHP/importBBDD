@@ -1,0 +1,57 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-01-2025 a las 20:50:58
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `silas_test`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users_list`
+--
+
+CREATE TABLE `users_list` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users_list`
+--
+
+INSERT INTO `users_list` (`id`, `email`, `name`, `password`) VALUES
+(1, 'qwe', 'diego', '1234');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `users_list`
+--
+ALTER TABLE `users_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `users_list`
+--
+ALTER TABLE `users_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;

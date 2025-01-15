@@ -5,6 +5,7 @@
 
     class User{
         public static function create_user($email, $name, $password){
+            echo "$email.'----''.$password.'----''.$name.'----'";
             $database = new Database();
             $conn = $database->getConnection();
 
@@ -16,16 +17,9 @@
             $stmt->bindParam(':password', $password);
 
             if ( $stmt-> execute()){
-                print json_encode(
-                    array(
-                        'estado' => '1',
-                        'mensaje' => 'Creación correcta'));
-        
+                header('HTTP/1.1 201 User created saccessfully');
             }else{
-                print json_encode(
-                    array(
-                        'estado' => '0',
-                        'mensaje' => 'Creación incorrecta'));
+                header('HTTP/1.1 404 User did not created');
             }
         }
     }
