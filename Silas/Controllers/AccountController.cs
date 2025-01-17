@@ -15,7 +15,10 @@ namespace Silas.Controllers
         {
             return View();
         }
-
+        public IActionResult Generic()
+        {
+            return View();
+        }
         public IActionResult Register()
         {
 
