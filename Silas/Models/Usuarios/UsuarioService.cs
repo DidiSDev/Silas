@@ -19,7 +19,7 @@ namespace Silas.Models.Usuarios
 
             try
             {
-                var response = await _httpClient.PostAsync("http://localhost/test_silas/api-rest/create_user.php", content);
+                var response = await _httpClient.PostAsync("http://volumidev.duckdns.org/silasapp/api/create_user.php", content);
                 response.EnsureSuccessStatusCode();
                 return response.IsSuccessStatusCode;
             }
