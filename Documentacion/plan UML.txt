@@ -1,0 +1,76 @@
+@startuml
+hide empty members
+
+class User{
+  - id: int
+  - email: String
+  - password: String
+  + register()
+  + login()
+  + updateLastAcces()
+  + deleteAcount() 
+  
+}
+
+class Student{
+  - profileImage: String
+  - nie: String
+  - name: String
+  - surname: String
+  - gendre: String
+  - birthdate: Date
+  - phone: String
+  - emerPhone: String
+  - nationality: String
+  - car: Boolean
+  - address: String
+  - registerDate: Date
+  - cv: PDF
+  + uploadCV()
+  + dataUpdate()
+  + makeApply()
+  + deleteApply()
+}
+
+class Company{
+  - address: String
+  - profileImg: String
+  - telephone: String
+  - contactName: String
+  - presentation: String
+  - mobile: String
+  - status: Boolean
+  + makeOffer()
+  + deleteOffer()
+}
+
+class Offer{
+  - id: String
+  - desciption: String
+  - requeriments: String
+  - publishDate: Date
+  - location: String
+  - id_company: String
+}
+
+class Apply{
+  - id_student: String
+  - id_company: String
+  - presentation: String
+  - status: String
+}
+
+class Admin{
+  + menageUser()
+  + menageOffers()
+  + menageApplys()
+}
+
+User<|-- Student
+User<|-- Company
+
+Admin--> User
+Admin--> Offer
+Company"1" -- "*" Offer
+Student"1" -- "*" Apply
+@enduml
