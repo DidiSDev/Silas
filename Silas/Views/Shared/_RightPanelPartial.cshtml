@@ -1,0 +1,32 @@
+﻿@model string
+
+@if (Model == "Admin")
+{
+    <h4>10 últimas ofertas</h4>
+    <ul>
+        <li>Oferta #1</li>
+        <li>Oferta #2</li>
+        <!-- EJEMPLO -->
+        <li>Oferta #10</li>
+    </ul>
+}
+else if (Model == "Alumno")
+{
+    <h4>Mis 5 últimos apliques</h4>
+    <ul>
+        <li style="color:red;">Aplique #1 (Descartado)</li>
+        <li style="color:yellow;">Aplique #2 (En proceso)</li>
+        <li style="color:green;">Aplique #3 (Aceptado)</li>
+        <!-- EJEMPLO -->
+    </ul>
+}
+else if (Model == "Empresa")
+{
+    <h4>Últimos 5 apliques a mis ofertas</h4>
+    <ul>
+        <li>Aplique #1 (Alumno X)</li>
+        <li>Aplique #2 (Alumno Y)</li>
+        <!-- EJEMPLO -->
+        <li>Aplique #5 (Alumno Z)</li>
+    </ul>
+}

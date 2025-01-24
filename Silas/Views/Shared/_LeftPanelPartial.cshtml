@@ -1,0 +1,27 @@
+﻿@model string // "Admin" / "Alumno" / "Empresa"
+
+@if (Model == "Admin")
+{
+    <h4>Últimos 10 apliques</h4>
+    <ul>
+        <li>Aplique 1</li>
+        <li>Aplique 2</li>
+        <!-- EJEMPLO -->
+        <li>Aplique 10</li>
+    </ul>
+}
+else if (Model == "Alumno")
+{
+    <h4>5 últimas nuevas ofertas</h4>
+    <ul>
+        <li>Oferta 1</li>
+        <li>Oferta 2</li>
+        <!-- EJEMPLO -->
+        <li>Oferta 5</li>
+    </ul>
+}
+else if (Model == "Empresa")
+{
+    <h4>Total de ofertas activas</h4>
+    <p>Mostrando, por ejemplo, 741284981781728519 ofertas activas xd...</p>
+}

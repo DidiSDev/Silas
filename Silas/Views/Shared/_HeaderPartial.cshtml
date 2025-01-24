@@ -1,0 +1,40 @@
+﻿@model (string role, string userName)
+
+<!-- ESTRUCTURA PARA HEADER: IZQ (LOGO+BOTONES) / DCH (PERFIL) -->
+<div id="generic_header">
+
+    <div class="header-left">
+        <!-- LOGO -->
+        <div id="logo_container">
+            <img src="~/images/logoSalesianos.jpg" alt="Logo Salesianos" />
+        </div>
+
+        <!-- BOTONES DE NAVEGACIÓN -->
+        <div class="header-nav">
+            @Html.Partial("HeaderButtons/_BtnInicio")
+
+            @if (Model.role == "Admin")
+            {
+                @Html.Partial("HeaderButtons/_Btn2_Admin")
+                @Html.Partial("HeaderButtons/_Btn3_Admin")
+                @Html.Partial("HeaderButtons/_Btn4_Admin")
+            }
+            else if (Model.role == "Empresa")
+            {
+                @Html.Partial("HeaderButtons/_Btn2_Empresa")
+                @Html.Partial("HeaderButtons/_Btn3_Empresa")
+                @Html.Partial("HeaderButtons/_Btn4_Empresa")
+            }
+            else
+            {
+                @Html.Partial("HeaderButtons/_Btn2_Alumno")
+                @Html.Partial("HeaderButtons/_Btn3_Alumno")
+                @Html.Partial("HeaderButtons/_Btn4_Alumno")
+            }
+        </div>
+    </div>
+    <!-- EL PERFIL -->
+    <div class="header-profile">
+        @Html.Partial("HeaderButtons/_BtnProfile", Model)
+    </div>
+</div>
