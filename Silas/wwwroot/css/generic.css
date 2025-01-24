@@ -1,98 +1,189 @@
-﻿/* =============================
-   VISTA GENERICA
-============================= */
-* {
-    font-family: Calibri;
-    box-sizing:border-box;
-}
+﻿/* FONDO BLUREADO */
 .bg_blur {
     background: url("/images/fondoSalesianos.jpg") no-repeat center center;
     background-size: cover;
-    
+    background-attachment: fixed;
 }
-body {
-    width: 100vw;
-    height: 100vh;
+
+/* BODY, ETC.. */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, sans-serif;
 }
 
 #generic_body {
-    padding-top: 30px;
     width: 100%;
     height: 100%;
-    margin: auto;
-    border: 1px solid red;
+    position: relative;
 }
 
-#generic_main_container {
-    padding-top:20px;
-    width: 100%;
-    height: 95%;
-    margin:auto;
-    border:1px solid blue;
-}
-#profile_photo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid black;
-    margin: auto;
-    margin-bottom: 10px;
-}
+/* HEADER  */
 #generic_header {
-    background-color: white;
-    width: 90%;
-    height: 5%;
-    margin: auto;
+    background-color: #b22222;
     display: flex;
-    justify-content: space-around;
-    box-shadow: 0px 0px 2px;
-    border-collapse: collapse;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* IZQ: LOGO + BOTONES */
+.header-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+#logo_container {
+    margin-left: 70px;
+    margin-right: 20px;
+}
+
+    #logo_container img {
+        height: 60px;
+        width: auto;
+    }
+
+.header-nav {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* BOTONES DE NAVEGACIÓN DEL HEADER */
+.header-button {
+    color: #fff;
+    background-color: rgba(200, 0, 0, 0.5); /* Un rojo más clarillo q no se con el fondo rojo */
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+    .header-button:hover {
+        background-color: rgba(255, 255, 255, 0.35); 
+        transform: scale(1.05); /* aumento en hover */
+    }
+
+
+
+/* PERFIL EN EL HEADER */
+.header-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 70px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #fff; 
+}
+
+.profile-name {
+    margin-top: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+    .profile-dropdown ul {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+    }
+
+        .profile-dropdown ul li {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+            .profile-dropdown ul li:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+/* Mostrar dropdown al hover o mejor al hacer click? */
+.profile-container:hover .profile-dropdown {
+    display: block;
+}
+
+
+/* CONTENEDOR QUE ENVUELVE LOS TRES PANELES */
+#generic_central_panel {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    /* FONDO BLANCO, BORDE, SOMBRA, ETC. */
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    padding: 20px;
     
 }
-#generic_header>div{
-    width:25%;
-    height:100%;
-    font-size:20px;
-    text-align:center;
-    border:1px solid black;
-    transition: 0.2s;
+
+/* LOS TRES PANELITOS */
+#left_panel,
+#central_panel,
+#right_panel {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+    margin-right: 10px; /* separacion hztal */
 }
 
-    #generic_header > div:hover{
-        background-color:red;
-        color:white;
-        cursor:pointer;
-    }
-
-    #generic_central_panel {
-        background-color: white;
-        width: 90%;
-        height: 75%;
-        border: 1px solid cyan;
-        margin: auto;
-        display: flex;
-        justify-content: space-around;
-    }
-#generic_central_panel>div{
-    text-align:center;
-    border: 1px solid magenta;
+/* Ajusto el ultimo para que no tenga margin extra */
+#right_panel {
+    margin-right: 0;
 }
-#left_panel{
+
+/* TAMANIOS */
+#left_panel {
+    flex-basis: 20%;
+}
+
+#central_panel {
     flex-grow: 1;
 }
-#central_panel{
-    flex-grow: 3;
-}
-#right_panel{
-    flex-grow:1;
+
+#right_panel {
+    flex-basis: 20%;
 }
 
-#generic_footer {
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
-    width: 90%;
-    height: 10%;
-    margin: auto;
-    border: 1px solid pink;
-}
+    /* Listas dentro de los paneles */
+    #left_panel ul,
+    #right_panel ul {
+        margin-left: 20px;
+    }

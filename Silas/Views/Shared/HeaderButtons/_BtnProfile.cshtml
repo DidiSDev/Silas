@@ -1,0 +1,21 @@
+﻿@model (string role, string userName)
+
+<!-- BOTON PERFIL CON DROPDOWN -->
+<div class="header-button profile-container">
+
+    <!-- FOTO -->
+    <img class="profile-pic" src="/images/avatar.jpg" alt="Foto perfil" />
+
+    <!-- NOMBRE DEL USUARIO LOGADO -->
+    <div class="profile-name">@Model.userName</div>
+
+    <!-- MENÚ -->
+    <div class="profile-dropdown">
+        <ul>
+            <li>Perfil (@Model.role)</li>
+            <li>Configuración</li>
+            <li>Logout</li>
+        </ul>
+    </div>
+
+</div>
