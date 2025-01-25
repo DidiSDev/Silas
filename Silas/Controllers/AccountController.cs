@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Silas.Models.Usuarios;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Net;
 
 namespace Silas.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UsuarioService _usuarioService;
+        private readonly UserService _usuarioService;
 
-        public AccountController(UsuarioService usuarioService)
+        public AccountController(UserService usuarioService)
         {
             _usuarioService = usuarioService;
         }
@@ -17,34 +19,27 @@ namespace Silas.Controllers
             return View();
         }
 
-        //UNA VEZ HECHO EL LOGIN, TENEMOS QUE MODULARIZAR EL TIPO DE USUARIO, TRAS EXTRAERLO DE LA BBDD
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public async Task<IActionResult> Login(string username, string password)
         {
-            // POR EJEMPLO SI VAMOS A HACER QUERY PARA VER SI ES EMPRESA, ADMIN O ALUMNO, CUANDO LO EXTRAIGAMOS...:
-            //AHORA PARA LAS PRUEBAS LO QUE TENEMOS QUE PONER ES:
-            /**
-             ADMIN: admin@salesianos.com / contraseña: "la que queramos"
-            ALUMNO: "lo que queramos" / "lo que queramos"
-            EMPRESA: "empresa@salesianos.com" / "la que queramos"
-             */
+            //validamos las credenciales del lgoin 
+            UserValidatorResponse response = await _usuarioService.CheckUserCredentials(username, password);
 
-            if (username == "admin@salesianos.com")
+            if (response.category == "student" || response.category == "company" )
             {
-                ViewBag.UserRole = "Admin";
-            }
-            else if (username == "empresa@salesianos.com")
-            {
-                ViewBag.UserRole = "Empresa";
-            }
-            else
-            {
-                // En el else entra con cualquier usuario y contraseña inventadas 
-                ViewBag.UserRole = "Alumno";
-            }
-
+                ViewBag.UserRole = response.category;
+                ViewBag.userId = response.id;
             // Tras loguear, REDIRIGIMOS A GENERIC
-            return View("Generic");
+                return View("Generic");
+            }
+            else if (response.category  == "Credentials Error")
+            {
+                //  SI CREDENCIALES ERRONEA RETURN A LOGIN DE NUEVO
+                ViewBag.Mensaje = "Credenciales Erroneas";
+            }
+                //  SI CREDENCIALES ERRONEA RETURN A LOGIN DE NUEVO
+                return View("Login");
+            
         }
 
 
@@ -70,20 +65,24 @@ namespace Silas.Controllers
 
         // REGISTRO
         [HttpPost]
-        public async Task<IActionResult> Register(Usuario usuario)
+        public async Task<IActionResult> Register(User usuario)
         {
-            ViewBag.Mensaje = "Usuario creado con exito";
+            ViewBag.Mensaje = "Usuario creado con exito " + usuario.email;
 
             if (ModelState.IsValid)
             {
-                var resultado = await _usuarioService.CrearUsuarioAsync(usuario);
-                if (resultado)
+                var resultado = await _usuarioService.AsyncCreateUser(usuario);
+                if (resultado == 0)
                 {
                     ViewBag.Mensaje = "Usuario creado con exito";
                 }
-                else
+                else if ( resultado == 1)
                 {
                     ViewBag.Mensaje = "Error al registrar usuario";
+                }
+                else
+                {
+                    ViewBag.Mensaje = "Email ya esta registrado";
                 }
             }
             return View();

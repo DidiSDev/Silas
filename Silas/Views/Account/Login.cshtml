@@ -22,8 +22,11 @@
             <input type="password" id="password" name="Password" required />
         </div>
         <button type="submit" class="btn-primary">Acceder</button>
-       
     </form>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Mensaje)) ;
+    <!-- Mostramos mensaje de confirmación de registro -->
+    <p>@ViewBag.Mensaje</p>
 
     <br />
     <a href="/Account/ForgotPassword">He olvidado mis claves de acceso</a>

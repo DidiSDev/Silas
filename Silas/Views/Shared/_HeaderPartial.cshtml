@@ -11,25 +11,26 @@
 
         <!-- BOTONES DE NAVEGACIÓN -->
         <div class="header-nav">
-            @Html.Partial("HeaderButtons/_BtnInicio")
+            @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Inicio")
 
             @if (Model.role == "Admin")
             {
-                @Html.Partial("HeaderButtons/_Btn2_Admin")
-                @Html.Partial("HeaderButtons/_Btn3_Admin")
-                @Html.Partial("HeaderButtons/_Btn4_Admin")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Ver Empresas")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Alumnos")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Inscribir empresa")
+                
             }
-            else if (Model.role == "Empresa")
+            else if (Model.role == "company")
             {
-                @Html.Partial("HeaderButtons/_Btn2_Empresa")
-                @Html.Partial("HeaderButtons/_Btn3_Empresa")
-                @Html.Partial("HeaderButtons/_Btn4_Empresa")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Mis ofertas")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Soporte")
             }
             else
             {
-                @Html.Partial("HeaderButtons/_Btn2_Alumno")
-                @Html.Partial("HeaderButtons/_Btn3_Alumno")
-                @Html.Partial("HeaderButtons/_Btn4_Alumno")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Ofertas")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Mis apliques")
+                @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Soporte")
+
             }
         </div>
     </div>
