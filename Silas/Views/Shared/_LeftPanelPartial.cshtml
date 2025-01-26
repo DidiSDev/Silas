@@ -1,6 +1,6 @@
 ﻿@model string // "Admin" / "Alumno" / "Empresa"
 
-@if (Model == "Admin")
+@if (Model == "admin")
 {
     <h4>Últimos 10 apliques</h4>
     <ul>
@@ -10,7 +10,7 @@
         <li>Aplique 10</li>
     </ul>
 }
-else if (Model == "Alumno")
+else if (Model == "student")
 {
     <h4>5 últimas nuevas ofertas</h4>
     <ul>
@@ -20,7 +20,7 @@ else if (Model == "Alumno")
         <li>Oferta 5</li>
     </ul>
 }
-else if (Model == "Empresa")
+else if (Model == "company")
 {
     <h4>Total de ofertas activas</h4>
     <p>Mostrando, por ejemplo, 741284981781728519 ofertas activas xd...</p>

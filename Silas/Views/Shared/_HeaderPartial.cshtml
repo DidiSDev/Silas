@@ -13,7 +13,7 @@
         <div class="header-nav">
             @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Inicio")
 
-            @if (Model.role == "Admin")
+            @if (Model.role == "admin")
             {
                 @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Ver Empresas")
                 @Html.Partial("HeaderButtons/_HeaderButtonPartial", "Alumnos")

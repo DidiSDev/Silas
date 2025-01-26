@@ -19,6 +19,10 @@ namespace Silas.Controllers
             return View();
         }
 
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
@@ -30,7 +34,7 @@ namespace Silas.Controllers
                 ViewBag.UserRole = response.category;
                 ViewBag.userId = response.id;
             // Tras loguear, REDIRIGIMOS A GENERIC
-                return View("Generic");
+                return View("_GenericLayout", new { userId = response.id });
             }
             else if (response.category  == "Credentials Error")
             {
@@ -45,8 +49,14 @@ namespace Silas.Controllers
 
         // EJEMPLO: Acción GET “Generic”:
    
-        public IActionResult Generic()
+
+
+
+
+        public async Task<IActionResult>  Generic( int userId)
         {
+
+
             // ESTOY FORZANDO EL ROL MANUAL DE MOMENTO, ESTÁ SIN FUNCIONALIDAD
             ViewBag.UserRole = "Admin"; // "Alumno/Empresa"
 
@@ -58,10 +68,18 @@ namespace Silas.Controllers
             return View();
         }
 
+
+
         public IActionResult ForgotPassword()
         {
             return View();
         }
+
+
+
+
+
+
 
         // REGISTRO
         [HttpPost]

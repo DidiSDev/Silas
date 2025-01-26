@@ -12,6 +12,11 @@ namespace Silas.Models.Usuarios
         }
 
 
+
+
+
+
+
         //METODO PARA LA CREACION DEL USER
         public async Task<int> AsyncCreateUser(User usuario)
         {
@@ -43,6 +48,21 @@ namespace Silas.Models.Usuarios
         }
 
 
+
+
+
+
+
+        //public async Task<UserResponse> GetUserByIdAsync(int userId)
+        //{
+        //   return ViewComponents
+        //}
+
+
+
+
+
+
         //METODO PARA VALIDAR LA EXISTENCIA DE UN EMAIL
         public async Task<bool> CheckEmailExist(string email)
         {
@@ -72,8 +92,13 @@ namespace Silas.Models.Usuarios
                 return false;
             }
         }
+        
 
 
+
+
+
+        //METODO PARA EL CHEKEO DE LAS CREDENCIALES INTRODUCIDAS EN EL LOGIN
         public async Task<UserValidatorResponse> CheckUserCredentials(string email, string password)
         {
             try
