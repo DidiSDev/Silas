@@ -1,0 +1,17 @@
+﻿@model Silas.Models.Company
+
+@{
+    Layout = "_GenericLayout";
+    ViewData["Title"] = "Detalles de la Empresa";
+}
+
+<h2>Detalles de la Empresa</h2>
+
+<div>
+    <p><strong>ID Usuario:</strong> @Model.IdUser</p>
+    <p><strong>Dirección:</strong> @Model.Address</p>
+    <p><strong>Teléfono:</strong> @Model.Telephone</p>
+    <p><strong>Contacto:</strong> @Model.Contact</p>
+    <p><strong>Móvil:</strong> @Model.Mobile</p>
+    <p><strong>Estado:</strong> @(Model.Status == 1 ? "Activo" : "Inactivo")</p>
+</div>

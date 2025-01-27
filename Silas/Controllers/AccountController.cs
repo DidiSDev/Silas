@@ -26,29 +26,29 @@ namespace Silas.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
-            //validamos las credenciales del lgoin 
             UserValidatorResponse response = await _usuarioService.CheckUserCredentials(username, password);
 
-            if (response.category == "student" || response.category == "company" )
+            if (response.category == "student" || response.category == "company")
             {
                 ViewBag.UserRole = response.category;
-                ViewBag.userId = response.id;
-            // Tras loguear, REDIRIGIMOS A GENERIC
-                return View("_GenericLayout", new { userId = response.id });
+                ViewBag.UserName = "UN NOMBRE"; //UNO ALEATORIO DE MOMENTO
+
+                // ESTO EN PPIO NO SE PUEDE TOCAR, TENEMOS QUE REDIRIGIR A Generic, no puedo eliminarlo ni ir a _GenericLayout porque crashea, no sé por qué,
+                //Es posible que C# internamente haya aceptado Generic como el luhgar al que ir tras Login y está en la lógica oculta de C#
+                return View("Generic");
             }
-            else if (response.category  == "Credentials Error")
+            else if (response.category == "Credentials error")
             {
-                //  SI CREDENCIALES ERRONEA RETURN A LOGIN DE NUEVO
-                ViewBag.Mensaje = "Credenciales Erroneas";
+
+                ViewBag.Mensaje = "Credenciales incorrectas";
             }
-                //  SI CREDENCIALES ERRONEA RETURN A LOGIN DE NUEVO
-                return View("Login");
-            
+            // Si las credenciales son erróneas, retornar a la vista de login (ARREGLAR USUARIO DE EMPRESA, POR ALGUNA RAZON VA AQUÍ)
+            return View("Login");
         }
 
 
         // EJEMPLO: Acción GET “Generic”:
-   
+
 
 
 
