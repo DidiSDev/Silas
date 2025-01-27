@@ -1,0 +1,42 @@
+﻿@model List<Silas.Models.Company>
+
+@{
+    Layout = "_GenericLayout";
+    ViewData["Title"] = "Lista de Empresas";
+}
+
+<h2>Lista de Empresas</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID Usuario</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Contacto</th>
+            <th>Móvil</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+                <tr>
+                    <td>@company.IdUser</td>
+                    <td>@company.Address</td>
+                    <td>@company.Telephone</td>
+                    <td>@company.Contact</td>
+                    <td>@company.Mobile</td>
+                    <td>@(company.Status == 1 ? "Activo" : "Inactivo")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-idUser="@company.IdUser">Detalles</a>
+                        <a asp-action="Update" asp-route-idUser="@company.IdUser">Actualizar</a>
+                        <form asp-action="Deactivate" asp-route-idUser="@company.IdUser" method="post" style="display:inline;">
+                            <button type="submit">Desactivar</button>
+                        </form>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

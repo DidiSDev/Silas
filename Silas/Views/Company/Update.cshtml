@@ -1,0 +1,37 @@
+﻿@model Silas.Models.Company
+
+@{
+    Layout = "_GenericLayout";
+    ViewData["Title"] = "Actualizar Empresa";
+}
+
+<h2>Actualizar Empresa</h2>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" name="IdUser" value="@Model.IdUser" />
+    <div>
+        <label for="Address">Dirección</label>
+        <input type="text" id="Address" name="Address" value="@Model.Address" />
+    </div>
+    <div>
+        <label for="Telephone">Teléfono</label>
+        <input type="text" id="Telephone" name="Telephone" value="@Model.Telephone" />
+    </div>
+    <div>
+        <label for="Contact">Contacto</label>
+        <input type="text" id="Contact" name="Contact" value="@Model.Contact" />
+    </div>
+    <div>
+        <label for="Mobile">Móvil</label>
+        <input type="text" id="Mobile" name="Mobile" value="@Model.Mobile" />
+    </div>
+    <div>
+        <label for="Status">Estado</label>
+        <select id="Status" name="Status">
+            <!-- DE MOMENTO NO TENEMOS  <option value="1" @(Model.Status == 1 ? "selected" : "")>Activo</option>
+            <option value="0" @(Model.Status == 0 ? "selected" : "")>Inactivo</option>-->
+           
+        </select>
+    </div>
+    <button type="submit">Actualizar</button>
+</form>
