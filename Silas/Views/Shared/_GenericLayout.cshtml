@@ -1,11 +1,12 @@
 ﻿@{
     // Aquí normalmente Layout = null si queremos que este sea el layout “base” no?
     // SIN HERENCIA
+    @model Silas.Models.Usuarios.UserValidatorResponse
     Layout = null;
 
     // Pruebas
-    var userRole = ViewBag.UserRole as string ?? "Alumno";
-    var userName = ViewBag.UserName as string ?? "Usuario";
+    var userRole = Model.category;
+    var userName = Model.name;
 }
 
 <!DOCTYPE html>
@@ -29,12 +30,12 @@
 
             <!-- LATERAL IZQUIERDO -->
             <div id="left_panel">
-                @Html.Partial("_LeftPanelPartial", userRole)
+                @Html.Partial("_LeftPanelPartial", (userRole))
             </div>
 
             <!-- MAIN -> Q SERÁ EL CONTENIDO Q PONGA LA VISTA HIJA -->
             <div id="central_panel">
-                @RenderBody()
+               @Html.Partial("Generic")
             </div>
 
             <!-- LATERAL DERECHO -->

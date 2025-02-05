@@ -20,9 +20,6 @@ namespace Silas.Controllers
         }
 
 
-
-
-
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
@@ -30,12 +27,11 @@ namespace Silas.Controllers
 
             if (response.category == "student" || response.category == "company")
             {
-                ViewBag.UserRole = response.category;
-                ViewBag.UserName = "UN NOMBRE"; //UNO ALEATORIO DE MOMENTO
+                //SI TENEMOS RESPONSE, LO MANDAMOS A GENERIC
 
                 // ESTO EN PPIO NO SE PUEDE TOCAR, TENEMOS QUE REDIRIGIR A Generic, no puedo eliminarlo ni ir a _GenericLayout porque crashea, no sé por qué,
                 //Es posible que C# internamente haya aceptado Generic como el luhgar al que ir tras Login y está en la lógica oculta de C#
-                return View("Generic");
+                return View("_GenericLayout", response);
             }
             else if (response.category == "Credentials error")
             {
@@ -53,12 +49,12 @@ namespace Silas.Controllers
 
 
 
-        public async Task<IActionResult>  Generic( int userId)
+        public async Task<IActionResult>  _GenericLayout( int userId)
         {
 
 
             // ESTOY FORZANDO EL ROL MANUAL DE MOMENTO, ESTÁ SIN FUNCIONALIDAD
-            ViewBag.UserRole = "Admin"; // "Alumno/Empresa"
+            
 
             return View();
         }

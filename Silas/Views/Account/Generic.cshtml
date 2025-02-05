@@ -1,12 +1,4 @@
-﻿@{
-    Layout = "_GenericLayout";   // EL LAYOUT GENERICO
-    ViewData["Title"] = "Vista Genérica";
-
-    // La entrada en este caso solo con Alumno por probar
-    if (ViewBag.UserRole == null) { ViewBag.UserRole = "Alumno"; }
-    if (ViewBag.UserName == null) { ViewBag.UserName = "Manuel"; }
-}
-
+﻿
 <h2>Bienvenido, @ViewBag.UserName</h2>
 <p>Aquí va el contenido ppal de la vista genérica turbosocio (main xd).</p>
 <p>Rol: @ViewBag.UserRole</p>
