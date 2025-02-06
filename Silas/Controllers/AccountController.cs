@@ -32,20 +32,7 @@ namespace Silas.Controllers
 
             if (response.category == "student" || response.category == "company")
             {
-                //SI EMPRESA -> CompanyController para obtener sus ofertas
-                var companyController = HttpContext.RequestServices.GetService<CompanyController>();
-                if (companyController != null)
-                {
-                    await companyController.LoadOffersForCompany(response.id);
-                }
-                else if (response.category == "student")
-                {
-                    //PARA CUANDO ES ESTUDIANTE
-                }
-                else
-                {
-                    response.category = "admin"; //El admin será el else
-                }
+               
 
                 return View("_GenericLayout", response);
 

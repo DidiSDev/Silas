@@ -1,0 +1,40 @@
+﻿@model Silas.Models.LeftPanelViewModel;// "Admin" / "Alumno" / "Empresa"
+
+@if (Model.userRole == "admin")
+{
+    <h4>Últimos 10 apliques</h4>
+    <ul>
+        <li>Aplique 1</li>
+        <li>Aplique 2</li>
+        <!-- EJEMPLO -->
+        <li>Aplique 10</li>
+    </ul>
+}
+else if (Model.userRole == "student")
+{
+    <h4>5 últimas nuevas ofertas</h4>
+    <ul>
+        <li>Oferta 1</li>
+        <li>Oferta 2</li>
+        <!-- EJEMPLO -->
+        <li>Oferta 5</li>
+    </ul>
+}
+else if (Model.userRole == "company")
+{
+    <h4>Todas mis ofertas activas</h4>
+    <ul>
+        @foreach(var item in Model.datalist)
+        {
+            <li>@item.title, @item.date</li>
+        }
+
+      @*   public int id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public string requiriments { get; set; }
+        public DateTime date { get; set; }
+        public string location { get; set; }
+        public int id_company { get; set; } *@
+    </ul>
+}
