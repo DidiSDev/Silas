@@ -13,6 +13,7 @@ namespace Silas.Models.Companies
             _httpClient = httpClient;
         }
 
+        //AÑADE UNA COMAÑIA A LA BBDD
         public async Task<bool> CreateCompanyAsync(Company company)
         {
             var json = JsonSerializer.Serialize(company);
@@ -30,6 +31,7 @@ namespace Silas.Models.Companies
             }
         }
 
+        //RECOGE UNA COMAÑIA DE LA DE BBDD POR SU ID
         public async Task<Company> GetCompanyByIdAsync(int idUser)
         {
             try
@@ -52,6 +54,7 @@ namespace Silas.Models.Companies
             }
         }
 
+        //ACTUALIZA LOS DATOS DE LA COPAÑIA EN LA BBDD
         public async Task<bool> UpdateCompanyAsync(Company company)
         {
             var json = JsonSerializer.Serialize(company);
@@ -69,6 +72,8 @@ namespace Silas.Models.Companies
             }
         }
 
+
+        //DESACTIVA UNA COMPAÑIA EN LA BBDD
         public async Task<bool> DeactivateCompanyAsync(int idUser)
         {
             var json = JsonSerializer.Serialize(new { id_user = idUser });
@@ -86,6 +91,8 @@ namespace Silas.Models.Companies
             }
         }
 
+
+        //RECOGE TODAS LAS COPAÑIAS DE LA BBDD
         public async Task<List<Company>> ListAllCompaniesAsync()
         {
             try
