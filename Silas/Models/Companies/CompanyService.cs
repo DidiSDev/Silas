@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Silas.Models.Offers;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -112,6 +113,29 @@ namespace Silas.Models.Companies
             catch (HttpRequestException)
             {
                 return null;
+            }
+        }
+
+
+        //LISTO LAS OFERTAS EN "_LeftPanelPartial" DE UNA id_company CONCRETA
+        public async Task<List<Offer>> ListOffersByCompanyIdAsync(int companyId)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync(
+                    $"http://volumidev.duckdns.org/silasapp/api/endpoint/listOffersByCompanyId.php?id_company={companyId}"
+                );
+                response.EnsureSuccessStatusCode();
+
+                var json = await response.Content.ReadAsStringAsync();
+                var offers = JsonSerializer.Deserialize<List<Offer>>(json);
+
+                return offers ?? new List<Offer>();
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return new List<Offer>();
             }
         }
     }

@@ -2,6 +2,8 @@
 using Silas.Models.Usuarios;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Net;
+using Silas.Models.Companies;
+using Silas.Models.Offers;
 
 namespace Silas.Controllers
 {
@@ -9,9 +11,12 @@ namespace Silas.Controllers
     {
         private readonly UserService _usuarioService;
 
-        public AccountController(UserService usuarioService)
+
+        public AccountController(UserService usuarioService) //INYECTO EL SERVICIO DE LA COMPAÑÍA TAMBIÉN Y LA INSTANCIO PARA TRABAJAR CON ELLA
+            //Y LLAMARLA EN LA ´FUNCIÓN LOGIN ANTES DE CARGAR "_GenericLayout"
         {
             _usuarioService = usuarioService;
+
         }
 
         public IActionResult Login()
@@ -27,11 +32,24 @@ namespace Silas.Controllers
 
             if (response.category == "student" || response.category == "company")
             {
-                //SI TENEMOS RESPONSE, LO MANDAMOS A GENERIC
+                //SI EMPRESA -> CompanyController para obtener sus ofertas
+                var companyController = HttpContext.RequestServices.GetService<CompanyController>();
+                if (companyController != null)
+                {
+                    await companyController.LoadOffersForCompany(response.id);
+                }
+                else if (response.category == "student")
+                {
+                    //PARA CUANDO ES ESTUDIANTE
+                }
+                else
+                {
+                    response.category = "admin"; //El admin será el else
+                }
 
-                // ESTO EN PPIO NO SE PUEDE TOCAR, TENEMOS QUE REDIRIGIR A Generic, no puedo eliminarlo ni ir a _GenericLayout porque crashea, no sé por qué,
-                //Es posible que C# internamente haya aceptado Generic como el luhgar al que ir tras Login y está en la lógica oculta de C#
                 return View("_GenericLayout", response);
+
+             
             }
             else if (response.category == "Credentials error")
             {
@@ -51,8 +69,6 @@ namespace Silas.Controllers
 
         public async Task<IActionResult>  _GenericLayout( int userId)
         {
-
-
             // ESTOY FORZANDO EL ROL MANUAL DE MOMENTO, ESTÁ SIN FUNCIONALIDAD
             
 

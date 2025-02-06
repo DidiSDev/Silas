@@ -1,4 +1,6 @@
 using Silas.Models.Usuarios;
+using Silas.Models.Companies;
+using Silas.Models.Offers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ builder.Logging.AddConsole(); // Agrega el log de consola
 // Add services to the container.
 builder.Services.AddHttpClient<UserService>();	
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient<CompanyService>();
+
 
 var app = builder.Build();
 
