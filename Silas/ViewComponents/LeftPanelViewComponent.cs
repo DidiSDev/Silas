@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Silas.Models;
 using Silas.Models.Companies;
 using Silas.Models.Offers;
+using System.Reflection;
 
 namespace Silas.ViewComponents
 {
@@ -18,15 +20,28 @@ namespace Silas.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(string userRole, int userId)
         {
         
-            List<Offer> offers = await _offerService.GetOffersByCompanyIdAsync(11);
-            var model = new LeftPanelViewModel
+            List<Offer> offers = await _offerService.GetOffersByCompanyIdAsync(userId);
+            if (userRole == "company")
             {
-                userRole = userRole,
-                datalist = offers
-            };
+                var model = new LeftPanelViewModel
+                {
+                    userRole = userRole,
+                    datalist = offers
+                   
+                };
+                return View("LeftPanel", model);
 
-            return View("LeftPanel", model);
-        
+            }
+            else if (userRole == "student")
+            {
+                //OTRA COSA
+            }
+            else
+            {
+                //EL ADMIN, OTRA COSA
+            }
+
+            return View("LeftPanel", OTRACOSA);
         }
     }
 }

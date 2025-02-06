@@ -30,6 +30,9 @@
 
             <!-- LATERAL IZQUIERDO -->
             <div id="left_panel">
+                <!-- IMPORTANTE, "LeftPanel" ESTÁ LLAMANDO REALMENTE A LeftPanelViewComponent, AL MÉTODO InvokeAsync que tenemos allí
+AL QUE LE ESTAMOS ENVIANDO userRole y userId
+                -->
                 @await Component.InvokeAsync("LeftPanel", new { userRole = Model.category, userId = Model.id })
             </div>
 
