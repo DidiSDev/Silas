@@ -24,11 +24,8 @@ namespace Silas.Models.Offers
                 response.EnsureSuccessStatusCode();
 
                 var json = await response.Content.ReadAsStringAsync();
-                var jsonOptions = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                };
-                var offers = JsonSerializer.Deserialize<List<Offer>>(json, jsonOptions);
+          
+                var offers = JsonSerializer.Deserialize<List<Offer>>(json);
                 return offers ?? new List<Offer>();
             }
             catch (HttpRequestException ex)

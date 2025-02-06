@@ -41,7 +41,7 @@ namespace Silas.ViewComponents
                 //EL ADMIN, OTRA COSA
             }
 
-            return View("LeftPanel", OTRACOSA);
+            return View("LeftPanel");
         }
     }
 }
